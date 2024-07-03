@@ -2,6 +2,7 @@ const { Router } = require("express");
 const userModel = require("../models/userModel");
 const bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
+require('dotenv').config();
 // const blacklistModel = require("../models/blacklistModel");
 
 const userRouter = Router();
@@ -86,7 +87,7 @@ userRouter.post("/login", async (req, res) => {
               role: exists.role,
             
             },
-            "masai",
+            process.env.JWT_SECRET,
             (err, token) => {
               if (err) console.log(err);
               else {
