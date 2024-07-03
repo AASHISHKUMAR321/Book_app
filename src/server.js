@@ -12,7 +12,7 @@ const port = process.env.PORT || 9090;
 const db_url = process.env.DB_URI;
 
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_URL}));
+app.use(cors({ origin: process.env.FRONTEND_URL, Credential: true }));
 app.use(express.json());
 app.use(
   session({
