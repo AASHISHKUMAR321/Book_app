@@ -4,7 +4,7 @@ const auth = async (req, res, next) => {
 
   
   const token = req.session.token;
-  console.log(req.session)
+  console.log(req.session.token,)
 
   if (!token) {
     return res.status(400).json({
