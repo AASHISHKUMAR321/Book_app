@@ -6,12 +6,14 @@ const auth = require("./middlewares/auth");
 const MongoStore = require("connect-mongo");
 const session = require("express-session");
 require("dotenv").config();
+const cors = require("cors");
 
 const port = process.env.PORT || 9090;
 const db_url = process.env.DB_URI;
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: process.env.FRONTEND_URL, optionsSuccessStatus: 200 }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -19,7 +21,7 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: db_url }),
     cookie: {
-      secure: true,
+      // secure: true,
       httpOnly: true,
     },
   })

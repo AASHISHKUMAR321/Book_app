@@ -2,9 +2,9 @@ var jwt = require("jsonwebtoken");
 require('dotenv').config()
 const auth = async (req, res, next) => {
 
-  console.log(req.session)
+  
   const token = req.session.token;
-
+  console.log(req.session)
 
   if (!token) {
     return res.status(400).json({
