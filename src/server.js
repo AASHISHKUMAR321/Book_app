@@ -21,7 +21,7 @@ app.use(
     saveUninitialized: false,
     store: MongoStore.create({ mongoUrl: db_url }),
     cookie: {
-      secure: true,
+      // secure: true,
       httpOnly: true,
        sameSite: 'none'
     },
