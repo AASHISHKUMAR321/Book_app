@@ -1,16 +1,18 @@
 var jwt = require("jsonwebtoken");
 require('dotenv').config()
 const auth = async (req, res, next) => {
-  const header = req.headers.authorization;
+
+  console.log(req.session)
+  const token = req.session.token;
 
 
-  if (!header) {
+  if (!token) {
     return res.status(400).json({
       message: "token  is not present or token is not provided",
     });
   }
 
-  const token = req.headers.authorization.split(" ")[1];
+  // const token = req.headers.authorization.split(" ")[1];
 
   //here we have to check if this particular token is blacklisted or not.
   // const blacklistToken = await blacklistModel.findOne({ token });
